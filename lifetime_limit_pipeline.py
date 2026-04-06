@@ -58,6 +58,15 @@ class Pipeline:
         if not user:
             return body
 
+        # --- CODE ENHANCEMENT START ---
+        # BYPASS SYSTEM TASKS:
+        # Open WebUI runs hidden background tasks (like generating the "followUps" )
+        #  We must ignore these so they don't consume the 
+        # user's lifetime limit or crash the image model.
+        if body.get("task") is not None or body.get("metadata", {}).get("task") is not None:
+            return body
+        # --- CODE ENHANCEMENT END ---
+
         user_role = user.get("role", "user")
         user_id = user.get("id", "default_user")
         model_id = body.get("model", "")
