@@ -16,7 +16,7 @@ class Pipeline:
         
         # The exact limits you requested, stored as a JSON string
         # You can edit this directly in the Open WebUI Valves interface later!
-        model_limits_json: str = '{"gpt-5-nano-2025-08-07": 10, "Generate Image": 2}'
+        model_limits_json: str = '{"gpt-5-nano-2025-08-07": 10, "text_to_image.gpt-image-1-mini-generator": 2}'
 
     def __init__(self):
         self.type = "filter"
